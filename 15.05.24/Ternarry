@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indeks Prestasi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .notification {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Indeks Prestasi Input</h1>
+    <form id="prestasiForm">
+        <label for="quiz">Quiz (10%):</label><br>
+        <input type="number" id="quiz" name="quiz" min="0" max="100"><br><br>
+
+        <label for="tugas">Tugas (20%):</label><br>
+        <input type="number" id="tugas" name="tugas" min="0" max="100"><br><br>
+
+        <label for="uts">UTS (30%):</label><br>
+        <input type="number" id="uts" name="uts" min="0" max="100"><br><br>
+
+        <label for="uas">UAS (40%):</label><br>
+        <input type="number" id="uas" name="uas" min="0" max="100"><br><br>
+
+        <input type="button" value="Hitung Indeks Prestasi" onclick="hitungIndeks()">
+    </form>
+    <div id="result" class="notification"></div>
+
+    <script>
+        function hitungIndeks() {
+       
+      var quiz = document.getElementById('quiz').value;
+      var tugas = document.getElementById('tugas').value;
+      var uts = document.getElementById('uts').value;
+      var uas = document.getElementById('uas').value;
+
+            if (quiz === '' || tugas === '' || uts === '' || uas === '') {
+                document.getElementById('result').innerText = 'Masukan nilai dahulu';
+                return;
+            }
+
+      quiz = Number(quiz);
+      tugas = Number(tugas);
+      uts = Number(uts);
+      uas = Number(uas);
+
+            var total = (quiz * 0.1) + (tugas * 0.2) + (uts * 0.3) + (uas * 0.4);
+
+            if (quiz > 100 || tugas > 100 || uts > 100 || uas > 100) {
+                document.getElementById('result').innerText = 'Nilai melebihi batas';
+                return;
+            }
+
+    var grade = total >= 80 ? 'A Lulus dengan sangat baik' :
+                total >= 65 ? 'B Lulus dengan baik' :
+                total >= 56 ? 'C Lulus dengan cukup' :
+                total >= 38 ? 'D Lulus dengan kurang' : 'E Tidak Lulus';
+            document.getElementById('result').innerText = 'Total: ' + total + ', Nilai Huruf: ' + grade;
+        }
+    </script>
+</body>
+</html>
