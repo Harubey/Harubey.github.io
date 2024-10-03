@@ -50,7 +50,7 @@ $motorKu->setSeri("Scoopy");
 $motorKu->setWarna("Merah");
 $motorKu->setTahun("2024");
 
-echo "<p>Informasi Motor Berubah:\n";
+echo "<p>Informasi Motor Berubah:<br />";
 $infoUpdated = $motorKu->getInfo();
 foreach ($infoUpdated as $key => $value) {
     echo "$key Motor Berubah: " . $value . "<br />";
